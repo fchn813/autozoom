@@ -1,20 +1,15 @@
 import os
-# os.add_dll_directory(os.getcwd())
 import pyautogui
 import time
 from datetime import datetime
-# import vlc
-
-
-
-
 
 def playVideoAndZoom():
 
+    # close zoom and vlc if they are runing, to make sure UI state are consistant
     os.system("taskkill /f /im  zoom.exe")
     os.system("taskkill /f /im  vlc.exe")
 
-    confi = 0.9
+    confi = 0.9  # GUI finding confident level, reduce to 0.9 to improve result. openCL required.
 
     # os.startfile(r'C:\Users\T420s\Desktop\HappyWalk\PlayHappyWalk.lnk')
     os.startfile(r'C:\Users\T420s\Desktop\HappyWalk\happyWalkPlusSong.xspf')
