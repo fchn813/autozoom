@@ -1,20 +1,7 @@
 import os
 import pyautogui
 import time
-import win32gui
     
-# handle = win32gui.FindWindow(0, "Zoom")  #paassing 0 as I dont know classname 
-
-
-# print (handle)
-# win32gui.SetForegroundWindow(handle)  #put the window in foreground
-
-# zw = pyautogui.getAllWindows()
-
-# for w in zw:
-#     if w.title == "Zoom" :
-#         w.activate()
-        
 
 confi = 0.9  # GUI finding confident level, reduce to 0.9 to improve result. openCL required.
 
@@ -22,14 +9,18 @@ confi = 0.9  # GUI finding confident level, reduce to 0.9 to improve result. ope
 
 def shareVideo() :
     #get focus
-    zoomWindow = pyautogui.getWindowsWithTitle("Zoom")
-    zoomWindow[0].SetFocus()
+    # zoomWindow = pyautogui.getWindowsWithTitle("Zoom")
+    # zoomWindow[0].SetFocus()
 
-    pyautogui.hotkey("alt","s")
-    time.sleep(5)
+    x,y = pyautogui.size()
+    pyautogui.click(x/2, y/2)
+
+    #start video sharing
+    pyautogui.hotkey("alt","s")  # start Zoom sharing
+    time.sleep(3)
      
     print("start find VLC icon") 
-    selectVLC =pyautogui.locateCenterOnScreen(r'C:\autozoom\selectVLC.png', confidence=0.95)
+    selectVLC =pyautogui.locateCenterOnScreen(r'C:\autozoom\selectVLC.png', confidence=confi)
     print(selectVLC)
     pyautogui.click(selectVLC)   
 
@@ -39,12 +30,13 @@ def shareVideo() :
     pyautogui.click(shareSound)  
     time.sleep(1)
 
-    print("start find optVideo icon")
+    # print("start find optVideo icon")
     # optVideo =pyautogui.locateCenterOnScreen(r'C:\autozoom\optVideo.png', confidence=confi)
 
     pyautogui.click(shareSound.x+200,shareSound.y)   
     time.sleep(1)
 
+    #start video play
     print("start find share icon")
     share =pyautogui.locateCenterOnScreen(r'C:\autozoom\share.png', confidence=confi)
     print(share)
