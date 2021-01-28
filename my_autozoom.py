@@ -17,7 +17,7 @@ def playVideoAndZoom():
     time.sleep(1) 
     x,y = pyautogui.size()
     pyautogui.click(x/2, y/2)
-    time.sleep(1)
+    time.sleep(2)
     pyautogui.press('space')  #pause the video
 
     os.startfile(r'C:\Users\T420s\AppData\Roaming\Zoom\bin\Zoom.exe')
