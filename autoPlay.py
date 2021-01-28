@@ -43,14 +43,16 @@ def shareVideo() :
     #start video play
     x,y = pyautogui.size()
     pyautogui.click(x/2, y/2)
-    pyautogui.hotkey('space')  #pause the video
+    pyautogui.hotkey('space')  #play the video
 
     #show video panel
-    pyautogui.moveTo(800,0,0.5) 
+    pyautogui.moveTo(800,0,1) 
     time.sleep(1)
-    pyautogui.moveTo(1250,30,0.5)
+    more =pyautogui.locateCenterOnScreen(r'C:\autozoom\1more.png', confidence=0.8)
+    print (more)
+    pyautogui.moveTo(more.x,more.y, 0.5)
     time.sleep(1)
-    pyautogui.moveTo(1300,260,0.5)
+    pyautogui.moveTo(more.x,more.y+230,0.5)
     time.sleep(0.5)
     pyautogui.click()
 
